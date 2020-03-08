@@ -1,0 +1,94 @@
+﻿@page
+@model FreakyFashion2.OrderConfirmationModel
+@{
+    ViewData["Title"] = "OrderConfirmation";
+    float Totalt = 0;
+    float Frakt = 100;
+}
+
+<h1 class="text-center">OrderConfirmation</h1>
+<h3 class="text-center">Thanks!</h3>
+<h3 class="text-center mb-4">
+    Payment has been placed orders shipped in two business days
+</h3>
+
+<div class="container border-top mt-4">
+    <h2>Order details</h2>
+    <ul >
+        <li> Name : @Model.user.FirstName @Model.user.LastName</li>
+        <li > Email : @Model.user.Email</li>
+        <li>Address : @Model.address.Street @Model.address.City @Model.address.ZibCode</li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Price</th>
+                        <th>Antal</th>
+                        <th>Totalt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Product in Model.Products)
+                    {
+                        <tr>
+                            <td>
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src="@Product.ImageUrl" class="card-img" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@Product.Name</h5>
+                                                <p class="card-text">@Product.ProductNumber</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@Product.Price</td>
+                            <td>
+                                <input type="text" name="name" value="1" placeholder="1" class="col-2" />
+                            </td>
+                            <td>@Product.Price kr</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container border-top">
+    <div class="row justify-content-end">
+        <div class="col-4 border">
+
+
+            @foreach (var Product in Model.Products)
+            {
+                Totalt += Product.Price;
+            }
+            <h4>Totalt Artiklar :@Totalt</h4>
+            <h4>Frakt : 100kr</h4>
+            <h4>
+                @{
+                    Totalt = Totalt + Frakt;
+                }
+                Total :@Totalt kr
+
+            </h4>
+
+        </div>
+    </div>
+</div>

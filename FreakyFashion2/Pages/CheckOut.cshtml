@@ -1,0 +1,131 @@
+﻿@page
+@model FreakyFashion2.CheckOutModel
+@{
+    ViewData["Title"] = "CheckOut";
+    float Totalt = 0;
+    float Frakt = 100;
+
+}
+
+<h1 class="text-center">Kassan</h1>
+
+
+
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Price</th>
+                    <th>Antal</th>
+                    <th>Totalt</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Product in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src="@Product.ImageUrl" class="card-img" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@Product.Name</h5>
+                                            <p class="card-text">@Product.ProductNumber</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@Product.Price</td>
+                        <td>
+                            <input type="text" name="name" value="1" placeholder="1" class="col-2" />
+                        </td>
+                        <td>@Product.Price kr</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container border-top">
+    <div class="row justify-content-end" >
+        <div class="col-4 border">
+
+
+            @foreach (var Product in Model.Products)
+            {
+                Totalt += Product.Price;
+            }
+            <h4>Totalt Artiklar :@Totalt</h4>
+            <h4>Frakt : 100kr</h4>
+            <h4>
+                @{
+                    Totalt = Totalt + Frakt;
+                 }
+            Total :@Totalt kr
+              
+        </h4>
+
+    </div>
+</div>
+
+</div>
+<h1 class="mb-2">Customer Details</h1>
+<div class="container border-top">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewUser.FirstName">First Name</label>
+                <input  class="form-control" asp-for="@Model.NewUser.FirstName">
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewUser.LastName">Last Name</label>
+                <input class="form-control" asp-for="@Model.NewUser.LastName">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewUser.SocialSecurityNumber">Social Security Number</label>
+                <input  class="form-control"  asp-for="@Model.NewUser.SocialSecurityNumber">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewUser.TelephoneNumber">Telephone Number</label>
+                <input  class="form-control"  asp-for="@Model.NewUser.TelephoneNumber">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewUser.Email" for="inputAddress">Email</label>
+                <input  class="form-control"  asp-for="@Model.NewUser.Email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewAddress.Street">Street</label>
+                <input  class="form-control" id="inputCity" asp-for="@Model.NewAddress.Street">
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="@Model.NewAddress.ZibCode">Zip</label>
+                <input  class="form-control" id="inputZip" asp-for="@Model.NewAddress.ZibCode">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.NewAddress.City">City</label>
+                <input  class="form-control" id="inputCity" asp-for="@Model.NewAddress.City">
+            </div>
+            </div>
+            <button type="submit" class="btn btn-dark" >Complete Buy</button>
+    </form>
+</div>
+

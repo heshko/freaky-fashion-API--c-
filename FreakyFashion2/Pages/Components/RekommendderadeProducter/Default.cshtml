@@ -1,0 +1,38 @@
+﻿@model List<FreakyFashion2.Models.ProductCategory>
+
+<h1 class="text-center mb-5">Recommnderat för dig </h1>
+<div class="container">
+    <div class="row">
+
+        @foreach (var Product in Model)
+        {
+      
+        <div class="col-3">
+            <a asp-page="/Product" asp-route-UrlSlug="@Product.Product.UrlSlug">
+                <img class="w-100" src="@Product.Product.ImageUrl" alt="Alternate Text" />
+
+                <ul class="list-group pt-4">
+                    <li class="list-group-item  border-0">Name: @Product.Product.Name</li>
+
+                    <li class="list-group-item  border-0">Description: @Product.Product.Description</li>
+
+                    <li class="list-group-item  border-0">Price: @Product.Product.Price kr</li>
+                    
+
+                </ul>
+            </a>
+        </div>
+       
+        }
+
+
+        
+    </div>
+</div>
+
+
+<style>
+    .col-3 img {
+        height: 400px;
+    }
+</style>

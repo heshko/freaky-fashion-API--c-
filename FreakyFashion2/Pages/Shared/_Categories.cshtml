@@ -1,0 +1,20 @@
+﻿@using FreakyFashion2.Models
+@model List<Category>
+
+
+
+<div class="container m-5">
+    <div class="row">
+
+        @foreach (var category in Model)
+        {
+            <a class="col-4 text-center " asp-page="/CatagoryProducts" asp-route-name="@category.Name">
+                <div class=" border" style="height:200px">@category.Name</div>
+            </a>
+        }
+      
+
+
+    </div>
+</div>
+

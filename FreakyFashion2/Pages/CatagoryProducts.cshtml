@@ -1,0 +1,38 @@
+﻿@page "{name}"
+@model FreakyFashion2.CatagoryProductsModel
+@{
+    ViewData["Title"] = "CatagoryProducts";
+}
+
+
+
+<div class="container">
+    <h1 class="text-center">@Model.Category.Name</h1>
+    <div class="row">
+        @foreach (var product in Model.Category.ProductCategory )
+        {
+            <div class="col-3 mb-4">
+                <a asp-page="/Product" asp-route-UrlSlug="@product.Product.UrlSlug">
+                    <img class="w-100" src="@product.Product.ImageUrl" alt="Alternate Text" />
+                </a>
+                <ul class="list-group pt-4">
+                    <li class="list-group-item  border-0">Name :@product.Product.Name</li>
+
+                    <li class="list-group-item  border-0">Description :@product.Product.Description</li>
+
+                    <li class="list-group-item  border-0">Price :@product.Product.Price kr</li>
+
+
+                </ul>
+
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .col-3 img {
+        height: 400px
+    }
+</style>
+

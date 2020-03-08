@@ -1,0 +1,40 @@
+﻿@using FreakyFashion2.Models
+
+@model List<Product>
+
+
+<div class="container">
+    <h1 class="text-center">PopularProduct</h1>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            if (product.Id < 9)
+            {
+               
+        <div class="col-3">
+            <a asp-page="/Product" asp-route-UrlSlug="@product.UrlSlug">
+                <img class="w-100" src="@product.ImageUrl" alt="Alternate Text" />
+
+                <ul class="list-group pt-4">
+                    <li class="list-group-item  border-0">Name: @product.Name</li>
+
+                    <li class="list-group-item  border-0">Description: @product.Description</li>
+                    <li class="list-group-item  border-0">Price: @product.Price kr</li>
+
+                </ul>
+            </a>
+        </div>
+               
+            }
+
+        }
+
+    </div>
+</div>
+
+
+<style>
+    .col-3 img {
+        height: 400px;
+    }
+</style>

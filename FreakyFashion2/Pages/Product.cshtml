@@ -1,0 +1,43 @@
+﻿@page "{UrlSlug}"
+@model FreakyFashion2.ProductModel
+@{
+    ViewData["Title"] = "Product";
+}
+
+
+
+<div class="container">
+    <h1 class="text-center">Product</h1>
+    <div class="row">
+        <div class="col-6 mt-5 mb-5">
+            <img src="@Model.Product.ImageUrl" alt="" />
+        </div>
+        <div class="col-6">
+            <ul class="list-group pt-4">
+                <li class="list-group-item  border-0">Name: @Model.Product.Name</li>
+
+                <li class="list-group-item  border-0">Description: @Model.Product.Description</li>
+
+                <li class="list-group-item  border-0">Price:@Model.Product.Price kr</li>
+               <li class="list-group-item  border-0">
+                   <form method="post">
+                      <input type="hidden" asp-for="Product.Id" />
+                         <button class="btn btn-dark" >Add to basket</button>
+                    </form>
+                </li>
+                  
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@*<partial name="_RecommendedProducts" model="Model.ProductCategory" />*@
+
+@await Component.InvokeAsync("RekommendderadeProducter",Model.Product.UrlSlug);
+
+<style>
+    .col-6 img {
+        height: 500px;
+    }
+</style>

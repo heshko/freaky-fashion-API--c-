@@ -1,0 +1,12 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+ 
+
+<partial name="_Hero" model="Model.Products" />
+
+<partial name="_Categories" model="Model.Categories" />
+
+<partial name="PopularProduct" model="Model.Products" />

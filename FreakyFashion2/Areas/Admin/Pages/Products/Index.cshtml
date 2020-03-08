@@ -1,0 +1,49 @@
+﻿@page
+@model FreakyFashion2.Areas.Admin.Pages.Products.IndexModel
+@{
+}
+
+
+    <div class="row">
+        <form method="get" class="col-10 d-flex justify-content-center m-2">
+            <input class="mr-2 w-25" type="text" placeholder="Search By Product Name" asp-for="Search">
+            <button class="btn btn-dark">Filter</button>
+        </form>
+        <div class="col-1">
+            <a asp-area="Admin" asp-page="/Products/New" class="btn btn-dark ">
+                Add New Product
+            </a>
+        </div>
+    </div>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Art.nr</th>
+                    <th>Product</th>
+                    <th>Categories</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                <tr>
+                    <td>@product.ProductNumber</td>
+                    <td>@product.Name</td>
+                    <td>
+                        @foreach (var category in product.ProductCategory)
+                        {
+                            @:-  @category.Category.Name
+
+                                }
+                    </td>
+                        <td>@product.Price kr</td>
+                  
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

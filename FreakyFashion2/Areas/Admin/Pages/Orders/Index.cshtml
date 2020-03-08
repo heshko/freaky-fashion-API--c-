@@ -1,0 +1,32 @@
+﻿@page
+@model FreakyFashion2.Areas.Admin.Pages.Orders.IndexModel
+@{
+}
+
+    <h1>Order</h1>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Totalt</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.User.FirstName  @order.User.LastName</td>
+                            <td>@order.DateTime</td>
+                            
+                            <td>@order.Totalt kr</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

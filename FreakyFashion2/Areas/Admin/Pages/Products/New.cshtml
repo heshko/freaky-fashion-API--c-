@@ -1,0 +1,47 @@
+﻿@page
+@model FreakyFashion2.Areas.Admin.Pages.Products.NewModel
+@{
+   
+}
+
+   
+    <div class="container-fluid">
+        <h1 class="text-center text-dark">Add New Product</h1>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.NewProduct.Name"></label>
+                <input asp-for="@Model.NewProduct.Name" class="form-control">
+                <span asp-validation-for="@Model.NewProduct.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.NewProduct.ProductNumber"></label>
+                <input asp-for="@Model.NewProduct.ProductNumber" class="form-control">
+                <span asp-validation-for="@Model.NewProduct.ProductNumber"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.NewProduct.Description"></label>
+                <textarea asp-for="@Model.NewProduct.Description" class="form-control"></textarea>
+                <span asp-validation-for="@Model.NewProduct.Description"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select asp-items="@(new SelectList(Model.categories,"Id","Name"))" class="form-control" id="exampleFormControlSelect1"
+                        asp-for="@Model.NewProduct.CategoriesId" multiple>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.NewProduct.Price"></label>
+                <input asp-for="@Model.NewProduct.Price" class="form-control" id="exampleInputEmail1">
+                <span asp-validation-for="@Model.NewProduct.Price"></span>
+             </div>
+            <div class="form-group">
+                <label asp-for="@Model.NewProduct.ImageUrl"></label>
+                <input asp-for="@Model.NewProduct.ImageUrl" class="form-control" id="exampleInputEmail1">
+                <span asp-validation-for="@Model.NewProduct.ImageUrl"></span>
+            </div>
+            <button type="submit" class="btn btn-dark">Add   </button>
+        </form>
+    </div>
+

@@ -1,0 +1,52 @@
+﻿@using FreakyFashion2.Models
+@model List<ProductCategory>
+
+
+<h1 class="text-center">Recommnderat för dig </h1>
+<div class="container">
+    <div class="row">
+       
+            @foreach (var Product in Model)
+            {
+                <div class="col-3">
+
+                    <img class="w-100" src="@Product.Product.ImageUrl" alt="Alternate Text" />
+
+                    <ul class="list-group pt-4">
+                        <li class="list-group-item  border-0">Name: @Product.Product.Name</li>
+
+                        <li class="list-group-item  border-0">Description: @Product.Product.Description</li>
+
+                        <li class="list-group-item  border-0">Price: @Product.Product.Price kr</li>
+
+                    </ul>
+                </div>
+            }
+        
+
+        @*  @for (var x = 1; x < 5; x++)
+        {
+            <div class="col-3">
+
+                <img class="w-100" src="@Model[x].ImageUrl" alt="Alternate Text" />
+
+                <ul class="list-group pt-4">
+                    <li class="list-group-item  border-0">Name: @Model[x].Name</li>
+
+                    <li class="list-group-item  border-0">Description: @Model[x].Description</li>
+
+                    <li class="list-group-item  border-0">Price: @Model[x].Price kr</li>
+
+                </ul>
+            </div>
+        }
+        *@
+    </div>
+</div>
+
+
+<style>
+    .col-3 img {
+        height: 400px;
+    }
+</style>
